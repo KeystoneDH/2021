@@ -4,7 +4,7 @@ title: ""
 id: home
 ---
 
-# July 8-10, 2020<br/>@ [Temple University](https://www.psu.edu)
+# July 8-10, 2020<br/>@ Temple University
 
 <!-- <div class="site-nav">{% include navigation.html %}</div> -->
 <br/>
