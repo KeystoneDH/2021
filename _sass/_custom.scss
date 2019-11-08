@@ -183,12 +183,12 @@ li:before {
   margin: $h1 0 $h2 0;
 }
 
-.button-red {
+.button-dark-blue {
   @extend .button-blue;
   background-color: $dark-blue;
 }
 
-.button-red:hover {
+.button-dark-blue:hover {
   border: 1px solid $dark-blue;
 }
 
