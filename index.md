@@ -10,7 +10,7 @@ id: home
 <br/>
 
 ## Keystone DH 2020 is now accepting proposals*!*  
-Deadline extended to February 1, 2020.
+## Deadline extended to February 1, 2020.
 
 <a class="button button-dark-blue" href="https://docs.google.com/forms/d/e/1FAIpQLSfyIe3KUDXoXSUe_bF3CZ2fuOB0LAP6jPkXWyo0DsvKgsNcHQ/viewform" target="_blank">Proposal Submission Form</a>
 
