@@ -1,19 +1,17 @@
 ---
 layout: default
-title: ""
+title: "home"
 id: home
+tags: page
 ---
 
 # July 8-10, 2020<br/>@ Temple University
 
-<!-- <div class="site-nav">{% include navigation.html %}</div> -->
-## Check back soon for exciting anouncements about this year's keynote speakers and conference schedule.
+<h2 class="center"><a href="../registration">Registration</a> is now open.</h2>
 
 <br/>
 
-We are excited to announce that this year’s Keystone DH will be held at Temple University in Philadelphia. Keystone DH is an annual conference and a network of institutions and practitioners committed to advancing collaborative scholarship in digital humanities research and pedagogy across the Mid-Atlantic.
-
-This year, in addition to papers, panels, and workshops, the conference will feature a poster session and showcase demonstrations making use of Loretta C. Duckworth Scholars Studio’s [VR Lab](https://library.temple.edu/spaces/34) and [Makerspace](https://library.temple.edu/spaces/28)).
+Keystone DH 2020 will take place on July 8-10th at Temple University’s Charles Library at 1900 N. 13th Street Philadelphia, PA 19122. The program schedule is under development and will be available shortly. In the meantime, please see our updated information on conference registration, lodging, and travel.
 
 Questions? Feel free to contact us at **contact@keystonedh.network**.
 

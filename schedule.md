@@ -1,7 +1,7 @@
 ---
 layout: default
 title: schedule
-id: Schedule
+id: hidden
 tags: page
 ---
 

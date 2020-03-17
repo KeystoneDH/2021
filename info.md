@@ -1,7 +1,7 @@
 ---
 layout: default
 title: FAQ
-id: info
+id: hidden
 tags: page
 ---
 

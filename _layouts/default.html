@@ -27,10 +27,6 @@
 
     <div class="post px2 px-responsive wrap" role="main">
       <div class="measure {{ page.id }}">
-        
-        {% if page.id != "home" %}
-          {{ page.title | prepend: '<h2 class="page-title">' | append: '</h2>'}}
-        {% endif %}
 
         {{ content }}
       </div>

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: keynote
-id: Keynote
+id: hidden
 tags: page
 ---
 

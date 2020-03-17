@@ -1,7 +1,7 @@
 ---
 layout: default
 title: sponsors
-id: sponsors
+id: hidden
 tags: page
 ---
 Keystone DH 2018 is possible thanks to the generosity of the following:

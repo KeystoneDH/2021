@@ -1,3 +1,17 @@
+@mixin hover-border-transition() {
+  -webkit-transition: border-bottom .25s;
+  -moz-transition: border-bottom .25s;
+  -o-transition: border-bottom .25s;
+  transition: border-bottom .25s;
+}
+
+@mixin hover-color-transition() {
+  -webkit-transition: color .25s;
+  -moz-transition: color .25s;
+  -o-transition: color .25s;
+  transition: color .25s;
+}
+
 header.site-header {
     z-index: 9;
 }
@@ -28,10 +42,39 @@ header.site-header {
         font-size: 1.5 * $h2;
         text-align: center;
         -webkit-transition: font-size .3s;
-        -moz-transition: font-size .3s;
+        -moz-transition: font-size 1s;
         -o-transition: font-size .3s;
         transition: font-size .3s;
     }
+
+    .site-nav {
+      // text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      border: inherit;
+      & h2 {
+        margin: 0 0 0 0;
+      }
+      & a {
+        @include hover-border-transition;
+        border-bottom: 2.5px solid rgba(0,0,0,0);
+      }
+      & a.active {
+        border-bottom: 2.5px solid $link-color;
+      }
+      & a:hover {
+        border-bottom: 2.5px solid darken($yellow,5%);
+      }
+
+      @media screen and (min-width:$viewport-small){
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+  }
 }
 
 header .social-icons div.social-icons {
@@ -70,27 +113,34 @@ header .social-icons div.social-icons a{
     }
 }
 
-.home .site-nav {
-    text-align: center;
-    & a { display: inline-block; }
-}
-
 div.site-wrap div.post {
-    padding-top: 2 * $h1;
+    
+    padding-top: 3 * $h1;
 
     & h2.page-title {
         text-align: center;
+    }
+
+    @media screen and (max-width: $viewport-small){
+      padding-top: 0;
     }
 }
 
 div.home div.post{
 
-  padding-top: 3.25 * $h1;
+  padding-top: 4.25 * $h1;
 
   h1 { text-align: center; }
-  h1 a { color: $dark-blue; background-image: none; }
+  h1 a { 
+    color: $dark-blue; 
+    background-image: none; 
+    @include hover-color-transition; 
+  }
   h1 a:hover { color: lighten($dark-blue,20%);}
 
+  @media screen and (max-width: $viewport-small){
+    padding-top: 0;
+  }
 }
 
 div.sponsors {
@@ -133,7 +183,7 @@ div.sponsors {
 
 @media screen and (max-width: $viewport-small) {
 
-    h2 { padding-top: 5 * $h2; }
+    // h2 { padding-top: 5 * $h2; }
 
     p {
       font-size: $h3;

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "code of conduct"
-id: code
+id: hidden
 ---
 
 <br />
