@@ -7,7 +7,7 @@ tags: page
 
 # July 8-10, 2020<br/>@ Temple University
 
-<h2 class="center"><a href="../registration">Registration</a> is now open.</h2>
+<h2 class="center"><a href="{{ 'registration' | prepend: site.github.url }}">Registration</a> is now open.</h2>
 
 <br/>
 

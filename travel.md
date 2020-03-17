@@ -5,7 +5,7 @@ id: travel
 tags: page
 ---
 
-## Hotel
+## hotel
 
 A block of rooms is available for conference attendees at the [DoubleTree by Hilton](https://www.hilton.com/en/locations/doubletree/). Please visit the [Keystone DH 2020 Booking Website]( https://book.passkey.com/e/50086178) in order to reserve your room at the conference rate.
 
@@ -13,7 +13,7 @@ There are several other hotels near the conference. For more information on othe
 
 If you would prefer to stay on Temple campus in North Philadelphia, rooms are available at [the Conwell Inn](https://www.conwellinn.com/).
 
-## Travel 
+## travel
 
 [Temple University - Maps and Directions](https://www.temple.edu/maps-and-directions) General information on visiting Temple University's campus.
 

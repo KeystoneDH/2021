@@ -5,8 +5,6 @@ id: registration
 tags: page
 ---
 
-## Registration
-
 Please go to [Temple University’s DestinyOne site](https://noncredit.temple.edu/portal/events/reg/participantTypeSelection.do?method=load&entityId=36815699) to register for Keystone DH 2020. 
 
 Registration Fees: Regular $100 / Student $50
