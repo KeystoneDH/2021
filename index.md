@@ -7,11 +7,11 @@ tags: page
 
 # July 8-10, 2020<br/>@ Temple University
 
-<h2 class="center"><a href="{{ 'registration' | prepend: site.github.url }}">Registration</a> is now open.</h2>
+<h2 class="center">Please check back in two weeks for updates about this year's conference.</h2>
 
 <br/>
 
-Keystone DH 2020 will take place on July 8-10th at Temple University’s Charles Library at 1900 N. 13th Street Philadelphia, PA 19122. The program schedule is under development and will be available shortly. In the meantime, please see our updated information on conference registration, lodging, and travel.
+Keystone DH is an annual conference and a network of institutions and practitioners committed to advancing collaborative scholarship in digital humanities research and pedagogy across the Mid-Atlantic.
 
 Questions? Feel free to contact us at **contact@keystonedh.network**.
 

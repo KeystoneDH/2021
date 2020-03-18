@@ -1,7 +1,7 @@
 ---
 layout: default
 title: registration
-id: registration
+id: hidden
 tags: page
 ---
 

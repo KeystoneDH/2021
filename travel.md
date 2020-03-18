@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "hotel & travel"
-id: travel
+id: hidden
 tags: page
 ---
 
