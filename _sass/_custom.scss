@@ -141,6 +141,8 @@ div.home div.post{
   @media screen and (max-width: $viewport-small){
     padding-top: 0;
   }
+
+  h2:first-of-type { text-align: center;}
 }
 
 div.sponsors {
@@ -225,7 +227,7 @@ li {
 }
 
 li:before {
-    // content: "/  ";
+    content: "›  ";
     font-weight: 600;
 }
 
@@ -236,6 +238,12 @@ li:before {
 .button-dark-blue {
   @extend .button-blue;
   background-color: $dark-blue;
+
+  a {
+    color: unset;
+    text-decoration: none;
+    background-image: unset;
+  }
 }
 
 .button-dark-blue:hover {

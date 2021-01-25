@@ -5,17 +5,18 @@ id: home
 tags: page
 ---
 
-# July 8-10, 2020<br/>@ Temple University
+# July 15-16, 2020<br/>@ Temple University
+
+## [***CFP now open. Currently accepting conference proposals until March 15, 2021.***](/cfp)
 
 <br/>
+Keystone DH is a network of institutions and practitioners committed to advancing collaborative scholarship in digital humanities research and pedagogy across the Mid-Atlantic. This year, the Keystone DH conference will be hosted virtually by **Temple University’s Charles Library on July 15-16th, 2021**.
 
-**While we were hoping we could report otherwise, this year's Keystone DH conference is canceled.**
+Proposals for this years’ virtual conference are welcome on any aspect of digital technologies and their application to the humanities and/or social sciences. We encourage projects that focus on the collaborative nature of research and teaching. Senior scholars should foreground the labor of students, librarians, and/or the communities that sustained the project. We will prioritize proposals with representative and inclusive speaker involvement.
 
-Thank you all for your work this year helping to put this event together. We are grateful for your wide-ranging contributions. Because a core feature of this conference would be the use of the Charles Library's new spaces, and because of our limited bandwidth, we are not considering hosting the conference virtually. Instead, we are planning to postpone the conference until the summer of 2021. 
+**[Visit the CFP page for more information about submitting a proposal.](/cfp)**
 
-Expect another call for papers and a call for currently accepted participants to submit again this coming winter.  
-
-Questions? Feel free to contact us at **contact@keystonedh.network**.
+Questions? Feel free to contact us at **contactkeystonedh@gmail.com.**.
 
 <br/>
 
@@ -27,6 +28,7 @@ Questions? Feel free to contact us at **contact@keystonedh.network**.
 - Haverford College
 - Johns Hopkins University
 - Lehigh University
+- Penn State University
 - Rosemont College
 - Rowan University
 - Rutgers University
@@ -36,3 +38,4 @@ Questions? Feel free to contact us at **contact@keystonedh.network**.
 - University of Delaware
 - University of Pennsylvania
 - Villanova University
+

@@ -4,41 +4,7 @@ email:       contact@keystonedh.network
 description: "2020 Keystone Digital Humanities Conference will be held at Temple University, July 8-10, 2020."
 baseurl:     ""
 url:         "http://keystonedh.network"
-date_format: "%b %-d, %Y"
-
-# Prose settings
-prose:
-  rooturl: '_posts'
-  media: 'media'
-  metadata:
-    _posts:
-      - name: "layout"
-        field:
-          element: "hidden"
-          value: "post"
-      - name: "categories"
-        field:
-          element: "multiselect"
-          label: "Add categories"
-          placeholder: "Choose Tags"
-          options:
-            - name: "Left"
-              value: "left"
-            - name: "Right"
-              value: "Right"
-      - name: "date"
-        field:
-          element: "hidden"
-          value: CURRENT_DATETIME
-      - name: "title"
-        field:
-          element: "text"
-          label: "title"
-      - name: "published"
-        field:
-          element: "checkbox"
-          label: "Publish"
-          value: false             
+date_format: "%b %-d, %Y"     
 
 # Google services
 google_verification:
@@ -139,3 +105,5 @@ gems:
   - gemoji
 # https://github.com/jekyll/jekyll/issues/2938
 exclude: [vendor, html-example]
+include:
+  - _pages
