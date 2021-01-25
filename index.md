@@ -5,7 +5,7 @@ id: home
 tags: page
 ---
 
-# July 15-16, 2020<br/>@ Temple University
+# July 15-16, 2021<br/>@ Temple University
 
 ## [***CFP now open. Currently accepting conference proposals until March 15, 2021.***](/cfp)
 
@@ -16,7 +16,7 @@ Proposals for this years’ virtual conference are welcome on any aspect of digi
 
 **[Visit the CFP page for more information about submitting a proposal.](/cfp)**
 
-Questions? Feel free to contact us at **contactkeystonedh@gmail.com.**.
+Questions? Feel free to contact us at **contactkeystonedh@gmail.com.**. 
 
 <br/>
 
