@@ -16,7 +16,7 @@ Proposals for this years’ virtual conference are welcome on any aspect of digi
 
 **[Visit the CFP page for more information about submitting a proposal.](/2021/cfp)**
 
-Questions? Feel free to contact us at **contactkeystonedh@gmail.com.**. 
+Questions? Feel free to contact us at **contact@keystonedh.network**. 
 
 <br/>
 
