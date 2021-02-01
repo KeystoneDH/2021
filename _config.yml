@@ -3,7 +3,7 @@ title:       Keystone DH 2020
 email:       contact@keystonedh.network
 description: "2020 Keystone Digital Humanities Conference will be held at Temple University, July 8-10, 2020."
 baseurl:     ""
-url:         "http://keystonedh.network"
+url:         "https://keystonedh.network"
 date_format: "%b %-d, %Y"     
 
 # Google services
