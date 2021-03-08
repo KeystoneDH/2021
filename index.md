@@ -7,7 +7,7 @@ tags: page
 
 # July 15-16, 2021<br/>@ Temple University
 
-## [***CFP now open. Currently accepting conference proposals until March 15, 2021.***](/2021/cfp)
+## [***CFP now open. Currently accepting conference proposals until the extended deadline of March 22, 2021.***](/2021/cfp)
 
 <br/>
 Keystone DH is a network of institutions and practitioners committed to advancing collaborative scholarship in digital humanities research and pedagogy across the Mid-Atlantic. This year, the Keystone DH conference will be hosted virtually by **Temple University’s Charles Library on July 15-16th, 2021**.
