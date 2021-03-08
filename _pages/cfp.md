@@ -6,7 +6,7 @@ tags: page
 permalink: /cfp
 ---
 
-## ***CFP now open. Currently accepting conference proposals until March 15, 2021.***
+## ***CFP now open. Currently accepting conference proposals until March 22, 2021.***
 
 <button role="button" class="button-dark-blue" aria-label="open submit proposal form">
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdH3ffORyI2n3INxtBAD_rjBHV4boWinkvhJ_jLNduRYzJhpA/viewform">Click here to submit a proposal</a>
