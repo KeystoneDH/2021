@@ -1,7 +1,7 @@
 ---
 layout: default
 title: cfp
-id: cfp
+id: hidden
 tags: page
 permalink: /cfp
 ---
