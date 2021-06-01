@@ -15,24 +15,6 @@ $.fn.scrollView = function() {
 
 $(function(){
 
-    var headHeight = $('header').height();
-    var panelHeight = $('.panel').height();
-
-    $('#services a').on('click', function(e){
-        var currPanel = e.target.innerHTML;
-        $('#' + currPanel).scrollView();
-    });
-
-    $('#nav-arrow').on('click', function(e){
-
-        e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 1000);
-
-    });
-
-
     $(document).on('scroll', function(d){
 
         var currTop = $(this).scrollTop();
@@ -43,12 +25,6 @@ $(function(){
         } else {
             $('.site-title span').removeClass('little')
             $('header .social-icons').removeClass('little')
-        }
-
-        if (currTop > panelHeight) {
-            $('#nav-arrow').fadeIn();
-        } else {
-            $('#nav-arrow').fadeOut();
         }
 
     });
