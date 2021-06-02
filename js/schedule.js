@@ -1,33 +1,37 @@
+// parse json from google sheet and render schedule html
+
 const gsheetID = '1AiBjC9YapNJEHgHpqXvNOOVOZO_5h-KDaJQEmtz3jzI';
 const gsheetSheetNum = '1';
+const gSheetURL = `https://spreadsheets.google.com/feeds/cells/${gsheetID}/${gsheetSheetNum}/public/full?alt=json`
+const confDayStart = 14;
+const confLength = 3;
 let columns = [];
 let data = [];
 let $schedule = $('#schedule-view div');
 
+// take google sheet json feed and return row objects
+// with column header keys
 function parseGoogleSheetsJSONFeed(data) {
-
   const sheet = {};
-  sheet.rows = data.feed.entry;
-  
+  let rows = [];
+
+  sheet.rows = data.feed.entry;  
   sheet.dims = [
     Number(data.feed.gs$colCount.$t),
     Number(sheet.rows[sheet.rows.length - 1].gs$cell.row)
   ];
-  
   sheet.headers = []
   for (let i = 0; i < sheet.dims[0]; i++) {
     sheet.headers.push(sheet.rows.shift().content.$t);
   }
 
   columns = sheet.headers;
-  
-  let rows = [];
-  
+
   for (let i = 2; i <= sheet.dims[1]; i++) {
     let row = {};
     let cells = sheet.rows
-    .filter(d => d.gs$cell.row == i)
-    .map(d => d.gs$cell);
+      .filter(d => d.gs$cell.row == i)
+      .map(d => d.gs$cell);
     
     sheet.headers.forEach( (d,i) => {
       row[sheet.headers[i]] = cells
@@ -41,49 +45,59 @@ function parseGoogleSheetsJSONFeed(data) {
   return rows;
 }
 
-function getPresentations(data) {
-  
-  let presentations = [];
-
-  let presentationIDs = [];
-  for( row of data ) { presentationIDs.push(row.id) };
-  presentationIDs = [...new Set(presentationIDs)];
-
-  for (let i of presentationIDs) {
-    presentations.push(data.filter( (d) => d.id === i ))
+// returns transformed row objects to schedule data organized
+// by day, session, and presentation
+function transformToSchedule(data){
+  let daySessions = [];
+  let presentations = getPresentations(data);
+  let sessions = getSessions(presentations);
+  for (let i = 0; i < confLength; i++ ){
+    daySessions.push(
+      sessions.filter( 
+        d => d[0].session_id.substring(0,2) == confDayStart + i
+    ));
   }
+  return daySessions;
+}
 
-  presentations = presentations.map( (d) => {
+// return array of transformed unique presentations
+function getPresentations(data) {
+  let presentations = [];
+  let presentationIDs = getUniqueKeys(data, 'id');
+
+  function transformPresentation(presentation){
     let currPresentation = {};
 
-    for (let i = 0; i < columns.length; i++){
-      currPresentation[columns[i]] = [];
-      for(row of d) { 
-        if ( row[columns[i]] ) { 
-          currPresentation[columns[i]].push(row[columns[i]])
+    for (let column of columns){
+      currPresentation[column] = [];
+      for(row of presentation) { 
+        if ( row[column] ) { 
+          currPresentation[column].push(row[column])
         }
       }
-      if( i < 6) { 
-          currPresentation[columns[i]] = currPresentation[columns[i]][0] 
+      if( columns.indexOf(column) < 6) { 
+          currPresentation[column] = currPresentation[column][0] 
       }
     }
     currPresentation.presenters = getPresenters(currPresentation);
     currPresentation.links = getLinks(currPresentation);
 
     return currPresentation;
-  });
+  }
+
+  for (let i of presentationIDs) {
+    presentations.push( data.filter( (d) => d.id === i ) );
+  }
+
+  presentations = presentations.map( (d) => transformPresentation(d) );
 
   return presentations;
 }
 
+// return session array of presentation arrays
 function getSessions(presentations) {
   let sessions = [];
-
-  let sessionTitles = [];
-  for ( presentation of presentations ) { 
-    sessionTitles.push(presentation.session_title); 
-  }
-  sessionTitles = [...new Set(sessionTitles)];
+  let sessionTitles = getUniqueKeys(presentations, 'session_title');
 
   for( title of sessionTitles) {
     sessions.push(presentations.filter( e => e.session_title == title));
@@ -92,6 +106,7 @@ function getSessions(presentations) {
   return sessions;
 }
 
+// return array of presenters objects
 function getPresenters(currSession) {
   let currPresenters = [];
 
@@ -102,13 +117,14 @@ function getPresenters(currSession) {
     currPresenter.affiliation = (currSession.presenter_affiliation[i]) ?
       currSession.presenter_affiliation[i] : null;
     currPresenter.url = (currSession.presenter_url[i]) ?
-      currSession.presenter_affiliation[i] : null;
+      currSession.presenter_url[i] : null;
     currPresenters.push(currPresenter);
   });
 
   return currPresenters;
 }
 
+// return array of transformed supplemental presentation links
 function getLinks(currSession) {
   let currLinks = [];
   for (link of currSession.presentation_supplemental_link) { 
@@ -118,35 +134,42 @@ function getLinks(currSession) {
   return currLinks;
 }
 
+// return array of uniqe keys
+function getUniqueKeys(object, targetKey) {
+  let uniqueKeys = [];
+  for ( elem of object ) { 
+    uniqueKeys.push(elem[targetKey]); 
+  }
+  return [...new Set(uniqueKeys)];
+}
+
 $(function(){
 
-  $.getJSON(`https://spreadsheets.google.com/feeds/cells/${gsheetID}/${gsheetSheetNum}/public/full?alt=json`, 
-    (d) => { data = parseGoogleSheetsJSONFeed(d) })
+  $.getJSON( gSheetURL, (d) => { data = parseGoogleSheetsJSONFeed(d) })
     .then( () => {
 
-      let presentations = getPresentations(data);
-      let sessions = getSessions(presentations);
-      let currDay = 14;
+      let scheduleData = transformToSchedule(data);
 
+      // for each schedule day, append day, session, 
+      // presentation information card and modal
       $schedule.each( (i,e) => {  
-        let $el = $(e);
 
-        let daySessions = sessions.filter( 
-          d => d[0].session_id.substring(0,2) == currDay + i
-        );
-        daySessions.forEach( (v,i) => {
+        scheduleData[i].forEach( (day) => {
 
           let currSessionInfo = [];
           let presenters = [];
 
-          currSessionInfo.push(v[0].session_title);
+          currSessionInfo.push(day[0].session_title);
 
-          for (presentation of v) { 
+          for (presentation of day) { 
             let currPresenters = [];
-           for (presenter of presentation.presenters) {
-             currPresenters.push(presenter.name + ', ' + presenter.affiliation);
-             presenters.push(presenter.name);
-           }
+            for (presenter of presentation.presenters) {
+              // modal presenter display string
+              currPresenters.push(presenter.name + ', ' + presenter.affiliation);
+              // card presenter display string
+              presenters.push(presenter.name);
+            }
+          // modal presentation description display string
            let currPresentation = [];
            let displayTitle = (presentation.presentation_title) ?
             presentation.presentation_title :
@@ -159,8 +182,13 @@ $(function(){
             currSessionInfo.push(currPresentation)
           }
 
-          let session = $(`<a href="#session${v[0].session_id}" class="open-modal" rel="modal:open"></a>`);
-          let sessionInfo = $(`<div id="session${v[0].session_id}" class="modal"><span><a href="#" rel="modal:close">Close</a><h4>${currSessionInfo.shift()}</h4></span></div>`);
+          // session card display html element
+          let session = $(`<a href="#session${day[0].session_id}" class="open-modal" rel="modal:open"></a>`);
+
+          session.append(`<h3>${day[0].session_title}</h3>${presenters.join(' • ')}</p>`);
+
+          // session modal display html element
+          let sessionInfo = $(`<div id="session${day[0].session_id}" class="modal"><span><a href="#" rel="modal:close">Close</a><h4>${currSessionInfo.shift()}</h4></span></div>`);
 
           for (presentation of currSessionInfo) {
             sessionInfo.append(`<h5>${presentation[0]}</h5`);
@@ -168,11 +196,8 @@ $(function(){
             sessionInfo.append(`<p>${presentation[2]}</p`);
           }
 
-          session.append(`<h3>${v[0].session_title}</h3>${presenters.join(' • ')}</p>`);
-
           session.append(sessionInfo);
-
-          $el.append(session);
+          $(e).append(session);
         })
       });
 
