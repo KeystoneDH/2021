@@ -17,3 +17,4 @@ permalink: /schedule
   <div id="day-3" class="clearfix">
   </div>
 </div>
+

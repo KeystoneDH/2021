@@ -49,8 +49,8 @@ function getPresentations(data) {
   for( row of data ) { presentationIDs.push(row.id) };
   presentationIDs = [...new Set(presentationIDs)];
 
-  for (let i = 0; i < presentationIDs.length; i++) {
-    presentations.push(data.filter( (d) => d.id === presentationIDs[i] ))
+  for (let i of presentationIDs) {
+    presentations.push(data.filter( (d) => d.id === i ))
   }
 
   presentations = presentations.map( (d) => {
@@ -135,18 +135,50 @@ $(function(){
           d => d[0].session_id.substring(0,2) == currDay + i
         );
         daySessions.forEach( (v,i) => {
+
+          let currSessionInfo = [];
           let presenters = [];
+
+          currSessionInfo.push(v[0].session_title);
+
           for (presentation of v) { 
+            let currPresenters = [];
            for (presenter of presentation.presenters) {
-             presenters.push(presenter.name)
+             currPresenters.push(presenter.name);
+             presenters = presenters.concat(currPresenters);
            }
+           let currPresentation = [];
+           let displayTitle = (presentation.presentation_title) ?
+            presentation.presentation_title :
+            presentation.session_title;
+           
+            currPresentation.push(displayTitle);
+            currPresentation.push(currPresenters.join(', '));
+            currPresentation.push(presentation.presenter_abstract);
+
+            currSessionInfo.push(currPresentation)
           }
-          let session = `<div><h4>${v[0].session_title}</h4>${presenters.join(' • ')}</div>`
+
+          let session = $(`<a href="#session${v[0].session_id}" class="open-modal" rel="modal:open"></a>`);
+          let sessionInfo = $(`<div id="session${v[0].session_id}" class="modal"><span><a href="#" rel="modal:close">Close</a><h4>${currSessionInfo.shift()}</h4></span></div>`);
+
+          for (presentation of currSessionInfo) {
+            sessionInfo.append(`<h5>${presentation[0]}</h5`);
+            sessionInfo.append(`<p>${presentation[1]}</p`);
+            sessionInfo.append(`<p>${presentation[2]}</p`);
+          }
+
+          session.append(`<h3>${v[0].session_title}</h3>${presenters.join(' • ')}</p>`);
+
+          session.append(sessionInfo);
 
           $el.append(session);
         })
-
       });
 
-    });
+      $('a.open-modal').click(function(event) {
+        $(this).modal({ fadeDuration: 250 });
+        return false;
+      });
+    });  
 });

@@ -13,7 +13,7 @@
 }
 
 header.site-header {
-    z-index: 9;
+    z-index: 1;
 }
 
 header.site-header {
@@ -261,4 +261,44 @@ li:before {
 
 .keynote p {
   font-size: $h3 * .8;
+}
+
+#schedule-view > div > a {
+  display: block;
+  background-image: none;
+  background-color: rgba($dark-blue, 1);
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  margin-bottom: .5rem;
+  transition: background-color .25s;
+
+  &, h3 {
+    color: #fff;
+    text-shadow: unset;
+  }
+
+  &:hover {
+    background-color: rgba($dark-blue, .75);
+  }
+}
+
+/* added styles */
+
+.modal {
+  z-index: 99;
+}
+.modal p,
+.modal h5{
+  max-width: 35em;
+  margin: 0 auto;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal h4 {
+  max-width: 10em;
+}
+
+.modal span {
+  position: fixed;
 }

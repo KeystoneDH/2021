@@ -15,6 +15,10 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ "/css/pixyll.css" | prepend: site.github.url }}?{{ site.time | date: "%Y%m%d%H%M" }}" type="text/css">
 
+    {% if page.id == 'schedule' %}
+    <link rel="stylesheet" href="/css/modal.css" />
+    {% endif %}
+
     <!-- Fonts -->
     {% if site.show_social_icons or site.show_sharing_icons %}
       <link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -59,4 +63,5 @@
        ga('send', 'pageview');
     </script>
     {% endif %}
+
 </head>
