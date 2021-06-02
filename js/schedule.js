@@ -144,8 +144,8 @@ $(function(){
           for (presentation of v) { 
             let currPresenters = [];
            for (presenter of presentation.presenters) {
-             currPresenters.push(presenter.name);
-             presenters = presenters.concat(currPresenters);
+             currPresenters.push(presenter.name + ', ' + presenter.affiliation);
+             presenters.push(presenter.name);
            }
            let currPresentation = [];
            let displayTitle = (presentation.presentation_title) ?
@@ -153,7 +153,7 @@ $(function(){
             presentation.session_title;
            
             currPresentation.push(displayTitle);
-            currPresentation.push(currPresenters.join(', '));
+            currPresentation.push(currPresenters.join('<br/>'));
             currPresentation.push(presentation.presenter_abstract);
 
             currSessionInfo.push(currPresentation)

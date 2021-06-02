@@ -286,19 +286,34 @@ li:before {
 
 .modal {
   z-index: 99;
-}
-.modal p,
-.modal h5{
-  max-width: 35em;
-  margin: 0 auto;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
 
-.modal h4 {
-  max-width: 10em;
-}
+  p,
+  h5{
+    max-width: 35em;
+    margin: 0 auto;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 
-.modal span {
-  position: fixed;
+  h5 {
+    padding: .5em 0;
+    border-top: 2px solid $dark-blue;
+    border-bottom: 2px solid $dark-blue;
+  }
+
+  h4 {
+    max-width: 10em;
+  }
+
+  span {
+    position: fixed;
+  }
+ 
+  h5:first-of-type {
+    margin-top: 10em;
+    @media screen and (min-width:$viewport-medium){
+      margin-top: 1em;
+    }
+  }
+
 }
