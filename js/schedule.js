@@ -15,33 +15,29 @@ function parseGoogleSheetsJSONFeed(data) {
   const sheet = {};
   let rows = [];
 
-  sheet.rows = data.feed.entry;  
-  sheet.dims = [
-    Number(data.feed.gs$colCount.$t),
-    Number(sheet.rows[sheet.rows.length - 1].gs$cell.row)
-  ];
-  sheet.headers = []
-  for (let i = 0; i < sheet.dims[0]; i++) {
-    sheet.headers.push(sheet.rows.shift().content.$t);
-  }
+  sheet.rows = data.feed.entry;
+  sheet.cols = sheet.rows
+      .filter( d => d.gs$cell.row == 1)
+      .map( d => d.gs$cell.$t );
+  sheet.numRows = Number(sheet.rows[sheet.rows.length - 1].gs$cell.row);
 
-  columns = sheet.headers;
+  columns = sheet.cols;
 
-  for (let i = 2; i <= sheet.dims[1]; i++) {
+  for (let i = 2; i <= sheet.numRows; i++) {
     let row = {};
     let cells = sheet.rows
-      .filter(d => d.gs$cell.row == i)
-      .map(d => d.gs$cell);
+        .filter(d => d.gs$cell.row == i)
+        .map(d => d.gs$cell);
     
-    sheet.headers.forEach( (d,i) => {
-      row[sheet.headers[i]] = cells
-            .filter(d => Number(d.col) == i + 1)
-            .map(d => d.$t)[0]
+    sheet.cols.forEach( (d,i) => {
+      row[sheet.cols[i]] = cells
+          .filter(d => Number(d.col) == i + 1)
+          .map(d => d.$t)[0]
     })
-        
+
     rows.push(row);
   }
-  
+
   return rows;
 }
 
@@ -183,21 +179,21 @@ $(function(){
           }
 
           // session card display html element
-          let session = $(`<a href="#session${day[0].session_id}" class="open-modal" rel="modal:open"></a>`);
+          let $session = $(`<a href="#session${day[0].session_id}" class="open-modal" rel="modal:open"></a>`);
 
-          session.append(`<h3>${day[0].session_title}</h3>${presenters.join(' • ')}</p>`);
+          $session.append(`<h3>${day[0].session_title}</h3>${presenters.join(' • ')}</p>`);
 
           // session modal display html element
-          let sessionInfo = $(`<div id="session${day[0].session_id}" class="modal"><span><a href="#" rel="modal:close">Close</a><h4>${currSessionInfo.shift()}</h4></span></div>`);
+          let $sessionInfo = $(`<div id="session${day[0].session_id}" class="modal"><span><a href="#" rel="modal:close">Close</a><h4>${currSessionInfo.shift()}</h4></span></div>`);
 
           for (presentation of currSessionInfo) {
-            sessionInfo.append(`<h5>${presentation[0]}</h5`);
-            sessionInfo.append(`<p>${presentation[1]}</p`);
-            sessionInfo.append(`<p>${presentation[2]}</p`);
+            $sessionInfo.append(`<h5>${presentation[0]}</h5`);
+            $sessionInfo.append(`<p>${presentation[1]}</p`);
+            $sessionInfo.append(`<p>${presentation[2]}</p`);
           }
 
-          session.append(sessionInfo);
-          $(e).append(session);
+          $session.append($sessionInfo);
+          $(e).append($session);
         })
       });
 
