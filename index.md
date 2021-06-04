@@ -10,7 +10,7 @@ tags: page
 ## ***Stay tuned! Registration information and schedule coming soon.***
 
 <br/>
-Keystone DH is a network of institutions and practitioners committed to advancing collaborative scholarship in digital humanities research and pedagogy across the Mid-Atlantic. This year, the Keystone DH conference will be hosted virtually by **Temple University’s Charles Library on July 14-16th, 2021**.
+Keystone DH is a network of institutions and practitioners committed to advancing collaborative scholarship in digital humanities research and pedagogy across the Mid-Atlantic. This year, the Keystone DH conference will be hosted virtually by **Temple University’s (Charles Library)[https://www.temple.edu/about/libraries/charles] on July 14-16th, 2021**.
 
 <br/>
 Registration for Keystone DH 2021 is *free*. Stay tuned for open registration in June.
