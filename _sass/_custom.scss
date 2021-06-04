@@ -263,18 +263,22 @@ li:before {
   font-size: $h3 * .8;
 }
 
-#schedule-view > div > a {
+#schedule-view .session {
   display: block;
   background-image: none;
   background-color: rgba($dark-blue, 1);
   padding: .5rem 1rem;
   border-radius: .5rem;
-  margin-bottom: .5rem;
+  margin: .25rem .25rem;
   transition: background-color .25s;
 
-  &, h3 {
+  &, p, h3 {
     color: #fff;
     text-shadow: unset;
+  }
+
+  p {
+    font-size: 1rem
   }
 
   &:hover {
@@ -289,30 +293,31 @@ li:before {
 
   p,
   h5{
-    max-width: 35em;
+    max-width: 35rem;
     margin: 0 auto;
     font-size: 1rem;
     margin-bottom: 1rem;
   }
 
   h5 {
-    padding: .5em 0;
+    padding: .5rem 0;
     border-top: 2px solid $dark-blue;
     border-bottom: 2px solid $dark-blue;
   }
 
   h4 {
-    max-width: 10em;
+    max-width: 10rem;
   }
 
   span {
     position: fixed;
+    padding: .5rem;
   }
  
   h5:first-of-type {
-    margin-top: 10em;
+    margin-top: 10rem;
     @media screen and (min-width:$viewport-medium){
-      margin-top: 1em;
+      margin-top: 1rem;
     }
   }
 

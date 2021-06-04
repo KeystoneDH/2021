@@ -7,6 +7,15 @@ const confDayStart = 14;
 const confLength = 3;
 let columns = [];
 let data = [];
+const timeslot = {
+  1: "9:30&ndash;10:45am",
+  2: "10:45&ndash;12:00",
+  3: "12:00&ndash;1:15pm",
+  4: "1:45&ndash;3pm",
+  5: "3&ndash;4:15pm",
+  6: "4:15&ndash;5:30pm"
+}
+
 let $schedule = $('#schedule-view div');
 
 // take google sheet json feed and return row objects
@@ -30,7 +39,7 @@ function parseGoogleSheetsJSONFeed(data) {
         .map(d => d.gs$cell);
     
     sheet.cols.forEach( (d,i) => {
-      row[sheet.cols[i]] = cells
+      row[d] = cells
           .filter(d => Number(d.col) == i + 1)
           .map(d => d.$t)[0]
     })
@@ -93,10 +102,10 @@ function getPresentations(data) {
 // return session array of presentation arrays
 function getSessions(presentations) {
   let sessions = [];
-  let sessionTitles = getUniqueKeys(presentations, 'session_title');
+  let sessionIDs = getUniqueKeys(presentations, 'session_id');
 
-  for( title of sessionTitles) {
-    sessions.push(presentations.filter( e => e.session_title == title));
+  for( id of sessionIDs) {
+    sessions.push(presentations.filter( e => e.session_id == id));
   }
 
   return sessions;
@@ -150,52 +159,79 @@ $(function(){
       // presentation information card and modal
       $schedule.each( (i,e) => {  
 
-        scheduleData[i].forEach( (day) => {
+        scheduleData[i].forEach( (session) => {
 
-          let currSessionInfo = [];
-          let presenters = [];
+        // return hard coded timeslot strings based on session_id
+        let displayTime = ( session[0].session_id.substring(0,2) == '14')
+          ? timeslot[ Number(session[0].session_id.slice(-1)[0]) + 2]
+          : timeslot[ Number(session[0].session_id.slice(-1)[0])]
 
-          currSessionInfo.push(day[0].session_title);
-
-          for (presentation of day) { 
-            let currPresenters = [];
-            for (presenter of presentation.presenters) {
-              // modal presenter display string
-              currPresenters.push(presenter.name + ', ' + presenter.affiliation);
-              // card presenter display string
-              presenters.push(presenter.name);
-            }
-          // modal presentation description display string
-           let currPresentation = [];
-           let displayTitle = (presentation.presentation_title) ?
-            presentation.presentation_title :
-            presentation.session_title;
-           
-            currPresentation.push(displayTitle);
-            currPresentation.push(currPresenters.join('<br/>'));
-            currPresentation.push(presentation.presenter_abstract);
-
-            currSessionInfo.push(currPresentation)
+        // create timeslot grid row
+        let $timeslot = $(`
+          <div class="clearfix">
+            <div class="col sm-col sm-col-2">${displayTime}</div>
+          <div>
+          `);
+        
+        if (session[0].session_id.indexOf('w') == -1) {
+            // for sessions, add one session block
+            $timeslot.append( getSessionBlock(session) );
+        } else {
+            // for workshops, add a session block for each concurrent workshop
+          for( workshop of session ) {
+            $timeslot.append( getSessionBlock([workshop]) );
           }
+        }
 
-          // session card display html element
-          let $session = $(`<a href="#session${day[0].session_id}" class="open-modal" rel="modal:open"></a>`);
+        function getSessionBlock( session ) {
+          let currSession = {};
+          currSession.id = session[0].session_id;
+          currSession.title = session[0].session_title;
 
-          $session.append(`<h3>${day[0].session_title}</h3>${presenters.join(' • ')}</p>`);
+          currSession.presenters = 
+            ( session[0].session_id.indexOf('w') == -1 )
+            ? session.map( 
+                d => d.presenters.map( e => e.name ).join(', ') 
+              ).join(', ')
+            : session[0].presenters.map( d => d.name ).join(', ');
 
-          // session modal display html element
-          let $sessionInfo = $(`<div id="session${day[0].session_id}" class="modal"><span><a href="#" rel="modal:close">Close</a><h4>${currSessionInfo.shift()}</h4></span></div>`);
+          currSession.colClasses = 
+            ( session[0].session_id.indexOf('w') == -1 )
+            ? "sm-col-9" : "sm-col-3";
 
-          for (presentation of currSessionInfo) {
-            $sessionInfo.append(`<h5>${presentation[0]}</h5`);
-            $sessionInfo.append(`<p>${presentation[1]}</p`);
-            $sessionInfo.append(`<p>${presentation[2]}</p`);
-          }
+          // current session template
+          $currSession = $(`
+          <a class="session col sm-col ${currSession.colClasses}" href="#session${currSession.id}" class="open-modal" rel="modal:open">
+          <h3>${currSession.title}</h3>
+          <p>${currSession.presenters}</p>
+          </a>`);
 
-          $session.append($sessionInfo);
-          $(e).append($session);
-        })
-      });
+          $currSessionDetails = $(`
+            <div id="session${currSession.id}" class="modal"><span>
+              <a href="#" rel="modal:close">Close</a>
+              <h4>${currSession.title}</h4>
+              <h4>${displayTime}</h4>
+            </span></div>
+          `);
+
+          $currSessionDetails.append(getDetailsTemplate(session));
+          $currSession.append($currSessionDetails);
+          return $currSession;
+        }
+
+      function getDetailsTemplate(session){
+        let detailsTemplate = [];
+        for ( presentation of session ) {
+          detailsTemplate.push(`<h5>${presentation.presentation_title}</h5>`)
+          detailsTemplate.push(`<p>${presentation.presenters.map( d => d.name + ', ' + d.affiliation).join('<br/>') }</p>`)
+          detailsTemplate.push(`<p>${presentation.presenter_abstract}</p>`)
+        }
+        return detailsTemplate;
+      }
+
+      $(e).append($timeslot);
+    })
+  });
 
       $('a.open-modal').click(function(event) {
         $(this).modal({ fadeDuration: 250 });
