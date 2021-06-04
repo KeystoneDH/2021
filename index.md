@@ -5,7 +5,7 @@ id: home
 tags: page
 ---
 
-# July 15-16, 2021<br/>@ Temple University
+# July 14-16, 2021<br/>@ Temple University
 
 ## ***Stay tuned! Registration information and schedule coming soon.***
 
