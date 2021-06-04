@@ -7,14 +7,14 @@ const confDayStart = 14;
 const confLength = 3;
 let columns = [];
 let data = [];
-const timeslot = {
-  1: "9:30&ndash;10:45am",
-  2: "10:45&ndash;12:00",
-  3: "12:00&ndash;1:15pm",
-  4: "1:45&ndash;3pm",
-  5: "3&ndash;4:15pm",
-  6: "4:15&ndash;5:30pm"
-}
+const timeslot = [
+  "9:30&ndash;10:45am",
+  "10:45&ndash;12:00",
+  "12:00&ndash;1:15pm",
+  "1:45&ndash;3pm",
+  "3&ndash;4:15pm",
+  "4:15&ndash;5:30pm"
+]
 
 let $schedule = $('#schedule-view div');
 
@@ -163,8 +163,8 @@ $(function(){
 
         // return hard coded timeslot strings based on session_id
         let displayTime = ( session[0].session_id.substring(0,2) == '14')
-          ? timeslot[ Number(session[0].session_id.slice(-1)[0]) + 2]
-          : timeslot[ Number(session[0].session_id.slice(-1)[0])]
+          ? timeslot[ Number(session[0].session_id.slice(-1)[0]) + 1]
+          : timeslot[ Number(session[0].session_id.slice(-1)[0]) - 1]
 
         // create timeslot grid row
         let $timeslot = $(`
