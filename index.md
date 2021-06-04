@@ -17,7 +17,7 @@ Registration for Keystone DH 2021 is *free*. Stay tuned for open registration in
 
 <br/>
 
-The tentative (schedule)[/schedule] is now viewable. 
+The tentative (schedule)[https://keystonedh.network/2021/schedule] is now viewable. 
 
 <br/>
 Questions? Feel free to contact us at **contact@keystonedh.network**. 
