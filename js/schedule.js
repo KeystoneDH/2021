@@ -172,32 +172,30 @@ $(function(){
             <div class="col sm-col sm-col-2">${displayTime}</div>
           <div>
           `);
-        
-        if (session[0].session_id.indexOf('w') == -1) {
-            // for sessions, add one session block
-            $timeslot.append( getSessionBlock(session) );
-        } else {
+        if (session[0].presentation_type === 'workshop') {
             // for workshops, add a session block for each concurrent workshop
-          for( workshop of session ) {
-            $timeslot.append( getSessionBlock([workshop]) );
-          }
+            for( workshop of session ) {
+              $timeslot.append( getSessionBlock([workshop]) );
+            }
+        } else {
+              // for sessions, add one session block
+              $timeslot.append( getSessionBlock(session) );  
         }
 
         function getSessionBlock( session ) {
           let currSession = {};
           currSession.id = session[0].session_id;
           currSession.title = session[0].session_title;
-
-          currSession.presenters = 
-            ( session[0].session_id.indexOf('w') == -1 )
-            ? session.map( 
-                d => d.presenters.map( e => e.name ).join(', ') 
-              ).join(', ')
-            : session[0].presenters.map( d => d.name ).join(', ');
+          console.log(session[0])
+          currSession.presenters = ( session[0].presentation_type == 'workshop' )
+          ? session[0].presenters.map( d => d.name ).join(', ')
+          : session.map( d => d.presenters.map( 
+            d => d.name ).join(', ')
+          ).join(', ');
 
           currSession.colClasses = 
-            ( session[0].session_id.indexOf('w') == -1 )
-            ? "sm-col-9" : "sm-col-3";
+            ( session[0].presentation_type == 'workshop' ) 
+            ? "sm-col-3" : "sm-col-9";
 
           // current session template
           $currSession = $(`
