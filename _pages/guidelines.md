@@ -16,7 +16,9 @@ Presentations may take the form of short papers, panel discussions or roundtable
 
 All presentation sessions are 1.5 hours long. Panels, roundtables, and workshops will take place on Zoom. The Keystone Organizational Committee will set up Zoom meetings for each session, with presenters assigned as co-hosts. Technical hosts and moderators will be available to facilitate each session. 
 
-For general guidelines on preparing an accessible slideshow or recording your presentation, see Temple's guidelines below.
+Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://www.diglib.org/dlf-events/2016forum/guide-to-creating-accessible-presentations/). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](/code).
+
+For further guidelines on preparing an accessible slideshow or recording your presentation, see Temple's guidelines. 
 
 ### Presentation Format Guidelines
 
@@ -28,8 +30,7 @@ Paper presenter can choose to pre-record their presentations. The organizers' pr
 
 #### Roundtables 
 
-Roundtables can take a more open discussion format if the organizers prefer. 
-Please include your name, email address, institutional affiliation, title, and type of your proposed presentation, as well as a proposal of 200-300 words. Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://www.diglib.org/dlf-events/2016forum/guide-to-creating-accessible-presentations/). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](/code).
+Roundtables can take a more open discussion format if the organizers prefer.  
 
 #### Workshops
 
