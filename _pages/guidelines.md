@@ -14,7 +14,7 @@ Presentations may take the form of short papers, panel discussions or roundtable
 
 ### General Guidelines
 
-All presentation sessions are 1.5 hours long. Panels, roundtables, and workshops will take place on Zoom. The Keystone Organizational Committee will set up Zoom meetings for each session, with presenters assigned as co-hosts. Technical hosts and moderators will be available to facilitate each session. 
+All presentation sessions are 1.25 hours long. Panels, roundtables, and workshops will take place on Zoom. The Keystone Organizational Committee will set up Zoom meetings for each session, with presenters assigned as co-hosts. Technical hosts and moderators will be available to facilitate each session. 
 
 Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://www.diglib.org/dlf-events/2016forum/guide-to-creating-accessible-presentations/). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](/code).
 
