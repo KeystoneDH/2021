@@ -16,7 +16,7 @@ Presentations may take the form of short papers, panel discussions or roundtable
 
 All presentation sessions are 1.25 hours long. Panels, roundtables, and workshops will take place on Zoom. The Keystone Organizational Committee will set up Zoom meetings for each session, with presenters assigned as co-hosts. Technical hosts and moderators will be available to facilitate each session. 
 
-Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://wiki.diglib.org/Creating_Accessible_and_Interactive_Online_Presentations). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](/code).
+Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://wiki.diglib.org/Creating_Accessible_and_Interactive_Online_Presentations). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](https://keystonedh.network/2021/code).
 
 For further guidelines on preparing an accessible slideshow or recording your presentation, see Temple's guidelines. 
 
