@@ -16,7 +16,7 @@ Presentations may take the form of short papers, panel discussions or roundtable
 
 All presentation sessions are 1.25 hours long. Panels, roundtables, and workshops will take place on Zoom. The Keystone Organizational Committee will set up Zoom meetings for each session, with presenters assigned as co-hosts. Technical hosts and moderators will be available to facilitate each session. 
 
-Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://www.diglib.org/dlf-events/2016forum/guide-to-creating-accessible-presentations/). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](/code).
+Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://wiki.diglib.org/Creating_Accessible_and_Interactive_Online_Presentations). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](/code).
 
 For further guidelines on preparing an accessible slideshow or recording your presentation, see Temple's guidelines. 
 
@@ -30,12 +30,12 @@ Paper presenter can choose to pre-record their presentations. The organizers' pr
 
 #### Roundtables 
 
-Roundtables can take a more open discussion format if the organizers prefer.  
+The Roundtable format is a informal, open discussion format rather than a panel or lecture or poster format. The moderator should identify the key topics the roundtable is to address, then develop thought-provoking, open-ended questions to get at and discuss the issues surrounding these topics. Roundtables are also welcome to involve the audience in the discussion.
 
 #### Workshops
 
-Workshop presentations are expected to be live. Please coordinate with the organizers of the conference with any specific technical requests or issues with your workshop. 
+Workshop presentations are expected to be live. Please coordinate with the organizers of the conference with any specific technical requests or issues with your workshop. Check out this guide for [remote workshop strategies](https://www.method.com/insights/field-guide-to-remote-workshops/). 
 
 #### Digital Showcase
 
-Your session will occur on Gather.io, and you will have visitors come to your designated area of the virtual space to attend your poster session. You should plan to be there live, but have the choice of playing a pre-recorded lightning talk or showing a poster or slideshow and answering questions as visitors arrive.
+The Digital Showcase will be live on Gather. Showcase presenters are expected to prepare a five minute presentation. They are welcome to pre-record their presentation and show it for visitors to their virtual booth. Alternatively presenters can do a normal Poster Presentation live as guests visit their station and look at their work.
