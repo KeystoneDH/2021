@@ -46,7 +46,6 @@ function parseGoogleSheetsJSONFeed(data) {
 
     rows.push(row);
   }
-
   return rows;
 }
 
@@ -56,6 +55,7 @@ function transformToSchedule(data){
   let daySessions = [];
   let presentations = getPresentations(data);
   let sessions = getSessions(presentations);
+
   for (let i = 0; i < confLength; i++ ){
     daySessions.push(
       sessions.filter( 
@@ -86,16 +86,15 @@ function getPresentations(data) {
     }
     currPresentation.presenters = getPresenters(currPresentation);
     currPresentation.links = getLinks(currPresentation);
-
+    console.log(currPresentation)
     return currPresentation;
   }
 
   for (let i of presentationIDs) {
-    presentations.push( data.filter( (d) => d.id === i ) );
+    presentations.push( data.filter( (d) => d.id == i ) );
   }
 
   presentations = presentations.map( (d) => transformPresentation(d) );
-
   return presentations;
 }
 
@@ -107,7 +106,6 @@ function getSessions(presentations) {
   for( id of sessionIDs) {
     sessions.push(presentations.filter( e => e.session_id == id));
   }
-
   return sessions;
 }
 
@@ -145,7 +143,9 @@ function getUniqueKeys(object, targetKey) {
   for ( elem of object ) { 
     uniqueKeys.push(elem[targetKey]); 
   }
+
   return [...new Set(uniqueKeys)];
+
 }
 
 $(function(){
@@ -160,7 +160,6 @@ $(function(){
       $schedule.each( (i,e) => {  
 
         scheduleData[i].forEach( (session) => {
-
         // return hard coded timeslot strings based on session_id
         let displayTime = ( session[0].session_id.substring(0,2) == '14')
           ? timeslot[ Number(session[0].session_id.slice(-1)[0]) + 1]
@@ -186,7 +185,6 @@ $(function(){
           let currSession = {};
           currSession.id = session[0].session_id;
           currSession.title = session[0].session_title;
-          console.log(session[0])
           currSession.presenters = ( session[0].presentation_type == 'workshop' )
           ? session[0].presenters.map( d => d.name ).join(', ')
           : session.map( d => d.presenters.map( 
@@ -199,7 +197,7 @@ $(function(){
 
           // current session template
           $currSession = $(`
-          <a class="session col sm-col ${currSession.colClasses}" href="#session${currSession.id}" class="open-modal" rel="modal:open">
+          <a class="session col sm-col ${currSession.colClasses} open-modal" href="#session${currSession.id}" rel="modal:open">
           <h3>${currSession.title}</h3>
           <p>${currSession.presenters}</p>
           </a>`);
