@@ -16,9 +16,7 @@ Presentations may take the form of short papers, panel discussions or roundtable
 
 All presentation sessions are 1.25 hours long. Panels, roundtables, and workshops will take place on Zoom. The Keystone Organizational Committee will set up Zoom meetings for each session, with presenters assigned as co-hosts. Technical hosts and moderators will be available to facilitate each session. 
 
-Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://wiki.diglib.org/Creating_Accessible_and_Interactive_Online_Presentations). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](/code).
-
-For further guidelines on preparing an accessible slideshow or recording your presentation, see Temple's guidelines. 
+Please keep in mind that presentations and documents are expected to meet [accessibility guidelines](https://wiki.diglib.org/Creating_Accessible_and_Interactive_Online_Presentations). In addition, presenters and attendees must agree to follow the conference’s [Code of Conduct](https://keystonedh.network/2021/code).
 
 ### Presentation Format Guidelines
 
@@ -38,4 +36,4 @@ Workshop presentations are expected to be live. Please coordinate with the organ
 
 #### Digital Showcase
 
-The Digital Showcase will be live on [Gather](https://gather.town/). Showcase presenters are expected to prepare a five minute presentation. They are welcome to pre-record their presentation and show it for visitors to their virtual booth. Alternatively presenters can do a normal Poster Presentation live as guests visit their station and look at their work.
+The Digital Showcase is tentatively planned to take place live on [Gather](https://gather.town/). The Organizing Committee will coordinate with Showcase presenters via email. Regarldess of format, showcase presenters are expected to prepare a five minute presentation. They are welcome to pre-record their presentation and show it for visitors to their virtual booth. Alternatively presenters can do a normal Poster Presentation live as guests visit their station and look at their work.
