@@ -86,7 +86,7 @@ function getPresentations(data) {
     }
     currPresentation.presenters = getPresenters(currPresentation);
     currPresentation.links = getLinks(currPresentation);
-    console.log(currPresentation)
+
     return currPresentation;
   }
 
@@ -218,9 +218,10 @@ $(function(){
       function getDetailsTemplate(session){
         let detailsTemplate = [];
         for ( presentation of session ) {
+
           detailsTemplate.push(`<h5>${presentation.presentation_title}</h5>`)
           detailsTemplate.push(`<p>${presentation.presenters.map( d => d.name + ', ' + d.affiliation).join('<br/>') }</p>`)
-          detailsTemplate.push(`<p>${presentation.presenter_abstract}</p>`)
+          detailsTemplate.push(`<p>${marked(presentation.presenter_abstract[0])}</p>`)
         }
         return detailsTemplate;
       }
