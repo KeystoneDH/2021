@@ -1,7 +1,7 @@
 ---
 layout: default
 title: guidelines
-id: about
+id: guidelines
 tags: page
 permalink: /guidelines
 ---
