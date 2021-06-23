@@ -201,7 +201,7 @@ $(function(){
           $currSession = $(`
           <a class="session col sm-col ${currSession.colClasses} open-modal" href="#session${currSession.id}" rel="modal:open">
           <h3>${currSession.title}</h3>
-          ${(currSession.session_moderator) ? '<p>Moderator: ' + currSession.session_moderator + '</p>': ''}
+          ${(currSession.session_moderator) ? '<p>Moderator: ' + currSession.session_moderator.split(',')[0] + '</p>': ''}
           <p>${currSession.presenters}</p>
           </a>`);
 
