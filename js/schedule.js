@@ -84,9 +84,10 @@ function getPresentations(data) {
           currPresentation[column] = currPresentation[column][0] 
       }
     }
+
     currPresentation.presenters = getPresenters(currPresentation);
     currPresentation.links = getLinks(currPresentation);
-
+    
     return currPresentation;
   }
 
@@ -185,6 +186,7 @@ $(function(){
           let currSession = {};
           currSession.id = session[0].session_id;
           currSession.title = session[0].session_title;
+          currSession.session_moderator = session.map( d => d.session_moderator ).join('');
           currSession.presenters = ( session[0].presentation_type == 'workshop' )
           ? session[0].presenters.map( d => d.name ).join(', ')
           : session.map( d => d.presenters.map( 
@@ -199,6 +201,7 @@ $(function(){
           $currSession = $(`
           <a class="session col sm-col ${currSession.colClasses} open-modal" href="#session${currSession.id}" rel="modal:open">
           <h3>${currSession.title}</h3>
+          ${(currSession.session_moderator) ? '<p>Moderator: ' + currSession.session_moderator + '</p>': ''}
           <p>${currSession.presenters}</p>
           </a>`);
 
@@ -207,6 +210,7 @@ $(function(){
               <a href="#" rel="modal:close">Close</a>
               <h4>${currSession.title}</h4>
               <h4>${displayTime}</h4>
+              ${(currSession.session_moderator) ? '<h4>Moderator:<br/>' + currSession.session_moderator + '</h4>': ''}</h4>
             </span></div>
           `);
 
@@ -220,10 +224,25 @@ $(function(){
         for ( presentation of session ) {
 
           detailsTemplate.push(`<h5>${presentation.presentation_title}</h5>`)
-          detailsTemplate.push(`<p>${presentation.presenters.map( d => d.name + ', ' + d.affiliation).join('<br/>') }</p>`)
+          // detailsTemplate.push(`<p>${presentation.presenters.map( d => d.name + ', ' + d.affiliation).join('<br/>') }</p>`)
+          detailsTemplate.push(`<p>${getPresentersTemplate(presentation.presenters)}</p>`)
           detailsTemplate.push(`<p>${marked(presentation.presenter_abstract[0])}</p>`)
         }
         return detailsTemplate;
+      }
+
+      // return formatted presenter display string
+      // including anchor element if url
+      function getPresentersTemplate(presenters) {
+        
+        let presentersTemplate = presenters.map(d =>
+          `
+            ${(d.url) ? '<a href="' + d.url + '">' : ''}
+            ${d.name}, ${d.affiliation} 
+            ${(d.url) ? '</a>' : ''}
+          `.trim()
+        ).join('<br/>')
+        return presentersTemplate;
       }
 
       $(e).append($timeslot);
