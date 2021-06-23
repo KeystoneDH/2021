@@ -290,6 +290,7 @@ li:before {
 
 .modal {
   z-index: 99;
+  padding: 1rem;
 
   p,
   h5{
@@ -297,6 +298,7 @@ li:before {
     margin: 0 auto;
     font-size: 1rem;
     margin-bottom: 1rem;
+    overflow-x: hidden;
   }
 
   h5 {
@@ -310,15 +312,13 @@ li:before {
   }
 
   span {
-    position: fixed;
-    padding: .5rem;
+    @media screen and (min-width:$viewport-large){
+      position: fixed;
+    }
   }
  
   h5:first-of-type {
-    margin-top: 10rem;
-    @media screen and (min-width:$viewport-medium){
-      margin-top: 1rem;
-    }
+    margin-top: 1rem;
   }
 
 }
