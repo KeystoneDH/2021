@@ -15,7 +15,7 @@ Keystone DH and Temple University Libraries’ Loretta C. Duckworth Scholars Stu
 
 Registration for this year's conference is *free* and includes access to all events including keynote, digital showcase, workshops, and panel sessions.
 
-[Explore the full schedule here.](http://localhost:4000/schedule)
+[Explore the full schedule here.](https://keystonedh.network/2021/schedule)
 
 ---
 
