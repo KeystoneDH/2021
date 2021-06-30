@@ -227,6 +227,7 @@ $(function(){
           // detailsTemplate.push(`<p>${presentation.presenters.map( d => d.name + ', ' + d.affiliation).join('<br/>') }</p>`)
           detailsTemplate.push(`<p>${getPresentersTemplate(presentation.presenters)}</p>`)
           detailsTemplate.push(`<p>${marked(presentation.presenter_abstract[0])}</p>`)
+          detailsTemplate.push(getPresentationLinksTemplate(presentation.links))
         }
         return detailsTemplate;
       }
@@ -242,7 +243,21 @@ $(function(){
             ${(d.url) ? '</a>' : ''}
           `.trim()
         ).join('<br/>')
-        return presentersTemplate;
+        return presentersTemplate
+      }
+
+      // return formatted presentation links
+      // including anchor element if url
+      function getPresentationLinksTemplate(links) {
+        let presentationLinksTemplate = [];
+        presentationLinksTemplate.push('<h5>Supplemental Links</h5>')
+        presentationLinksTemplate.push('<ul>')
+        links.map(d => {
+          presentationLinksTemplate.push(marked(`- ${d}`))
+          }
+        )
+        presentationLinksTemplate.push('</ul>')
+        return (links.length) ? presentationLinksTemplate.join('\n') : '';
       }
 
       $(e).append($timeslot);
