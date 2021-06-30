@@ -250,7 +250,7 @@ $(function(){
       // including anchor element if url
       function getPresentationLinksTemplate(links) {
         let presentationLinksTemplate = [];
-        presentationLinksTemplate.push('<h5>Supplemental Links</h5>')
+        presentationLinksTemplate.push('<h6>Supplemental Links</h6>')
         presentationLinksTemplate.push('<ul>')
         links.map(d => {
           presentationLinksTemplate.push(marked(`- ${d}`))
