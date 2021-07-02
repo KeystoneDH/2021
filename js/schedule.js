@@ -222,9 +222,9 @@ $(function(){
       function getDetailsTemplate(session){
         let detailsTemplate = [];
         for ( presentation of session ) {
-
-          detailsTemplate.push(`<h5>${presentation.presentation_title}</h5>`)
-          // detailsTemplate.push(`<p>${presentation.presenters.map( d => d.name + ', ' + d.affiliation).join('<br/>') }</p>`)
+          detailsTemplate.push(`<h5>
+          ${presentation.presentation_title || presentation.session_title || ''}
+          </h5>`)
           detailsTemplate.push(`<p>${getPresentersTemplate(presentation.presenters)}</p>`)
           detailsTemplate.push(`<p>${marked(presentation.presenter_abstract[0])}</p>`)
           detailsTemplate.push(getPresentationLinksTemplate(presentation.links))
@@ -243,21 +243,21 @@ $(function(){
             ${(d.url) ? '</a>' : ''}
           `.trim()
         ).join('<br/>')
-        return presentersTemplate
+        return presentersTemplate || ''
       }
 
       // return formatted presentation links
       // including anchor element if url
       function getPresentationLinksTemplate(links) {
         let presentationLinksTemplate = [];
-        presentationLinksTemplate.push('<h6>Supplemental Links</h6>')
+        presentationLinksTemplate.push('<h6>Supplemental Links</h6`>')
         presentationLinksTemplate.push('<ul>')
         links.map(d => {
           presentationLinksTemplate.push(marked(`- ${d}`))
           }
         )
         presentationLinksTemplate.push('</ul>')
-        return (links.length) ? presentationLinksTemplate.join('\n') : '';
+        return presentationLinksTemplate.join('\n') || '';
       }
 
       $(e).append($timeslot);
