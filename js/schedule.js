@@ -8,12 +8,12 @@ const confLength = 3;
 let columns = [];
 let data = [];
 const timeslot = [
-  "9:30&ndash;10:45am EDT",
-  "10:45&ndash;12:00pm EDT",
-  "12:00&ndash;1:15pm EDT",
-  "1:45&ndash;3pm EDT",
-  "3&ndash;4:15pm EDT",
-  "4:15&ndash;5:30pm EDT"
+  "9:30&ndash;10:45am<br/>(EDT)",
+  "10:45&ndash;12:00pm<br/>(EDT)",
+  "12:00&ndash;1:15pm<br/>(EDT)",
+  "1:45&ndash;3pm<br/>(EDT)",
+  "3&ndash;4:15pm<br/>(EDT)",
+  "4:15&ndash;5:30pm<br/>(EDT)"
 ]
 
 let $schedule = $('#schedule-view div');
@@ -260,7 +260,7 @@ $(function(){
         return presentationLinksTemplate.join('\n') || '';
       }
 
-      $(e).append($timeslot);
+      $(e).append($timeslot).each((i,el)=>{ $(el).removeClass('hide') })
     })
   });
 
@@ -268,5 +268,6 @@ $(function(){
         $(this).modal({ fadeDuration: 250 });
         return false;
       });
-    });  
+
+    })
 });

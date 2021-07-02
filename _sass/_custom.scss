@@ -263,6 +263,19 @@ li:before {
   font-size: $h3 * .8;
 }
 
+#schedule-view .day {
+  opacity: 1;
+  -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+
+  &.hide {
+    opacity: 0;
+  }
+
+}
+
 #schedule-view .session {
   display: block;
   background-image: none;
@@ -270,6 +283,10 @@ li:before {
   padding: .5rem 1rem;
   border-radius: .5rem;
   margin: .25rem .25rem;
+
+  -webkit-transition: background-color .25s;
+  -moz-transition: background-color .25s;
+  -o-transition: background-color .25s;
   transition: background-color .25s;
 
   &, p, h3 {
