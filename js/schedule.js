@@ -8,12 +8,12 @@ const confLength = 3;
 let columns = [];
 let data = [];
 const timeslot = [
-  "9:30&ndash;10:45am",
-  "10:45&ndash;12:00",
-  "12:00&ndash;1:15pm",
-  "1:45&ndash;3pm",
-  "3&ndash;4:15pm",
-  "4:15&ndash;5:30pm"
+  "9:30&ndash;10:45am EDT",
+  "10:45&ndash;12:00pm EDT",
+  "12:00&ndash;1:15pm EDT",
+  "1:45&ndash;3pm EDT",
+  "3&ndash;4:15pm EDT",
+  "4:15&ndash;5:30pm EDT"
 ]
 
 let $schedule = $('#schedule-view div');
