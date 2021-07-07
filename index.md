@@ -11,7 +11,7 @@ tags: page
 
 <a class="button button-dark-blue" href="https://charlesstudy.temple.edu/calendar/events/keystone_dh">Register for Keystone DH 2021</a>
 
-Keystone DH and Temple University Libraries’ Loretta C. Duckworth Scholars Studio are thrilled to share schedule and registration information for this year’s virtual conference July 14-16th, 2021.
+Keystone DH and [Temple University Libraries’ Loretta C. Duckworth Scholars Studio](https://library.temple.edu/lcdss) are thrilled to share schedule and registration information for this year’s virtual conference July 14-16th, 2021.
 
 Registration for this year's conference is *free* and includes access to all events including keynote, digital showcase, workshops, and panel sessions.
 
