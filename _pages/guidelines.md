@@ -36,4 +36,4 @@ Workshop presentations are expected to be live. Please coordinate with the organ
 
 #### Digital Showcase
 
-The Digital Showcase is tentatively planned to take place live on [Gather](https://gather.town/). The Organizing Committee will coordinate with Showcase presenters via email. Regarldess of format, showcase presenters are expected to prepare a five minute presentation. They are welcome to pre-record their presentation and show it for visitors to their virtual booth. Alternatively presenters can do a normal Poster Presentation live as guests visit their station and look at their work.
+The Digital Showcase is tentatively planned to take place live on Zoom using breakout rooms. Showcase presenters are expected to prepare a five minute presentation. They are welcome to pre-record their presentation and show it for visitors to their virtual booth. Alternatively presenters can do a normal Poster Presentation live as guests visit their station and look at their work.
