@@ -76,9 +76,7 @@ function getPresentations(data) {
     for (let column of columns){
       currPresentation[column] = [];
       for(row of presentation) { 
-        if ( row[column] ) { 
-          currPresentation[column].push(row[column])
-        }
+        currPresentation[column].push(row[column] || null)
       }
       if( columns.indexOf(column) < 6) { 
           currPresentation[column] = currPresentation[column][0] 
@@ -87,7 +85,6 @@ function getPresentations(data) {
 
     currPresentation.presenters = getPresenters(currPresentation);
     currPresentation.links = getLinks(currPresentation);
-    
     return currPresentation;
   }
 
@@ -113,11 +110,9 @@ function getSessions(presentations) {
 // return array of presenters objects
 function getPresenters(currSession) {
   let currPresenters = [];
-
   currSession.presenter_name.forEach( (v,i) => {
     let currPresenter  = {};
     currPresenter.name = v;
-
     currPresenter.affiliation = (currSession.presenter_affiliation[i]) ?
       currSession.presenter_affiliation[i] : null;
     currPresenter.url = (currSession.presenter_url[i]) ?
@@ -186,7 +181,12 @@ $(function(){
           let currSession = {};
           currSession.id = session[0].session_id;
           currSession.title = session[0].session_title;
-          currSession.session_moderator = session.map( d => d.session_moderator ).join('');
+          currSession.session_moderator = []
+          for ( presentation of session ) {
+            currSession.session_moderator.push(...presentation.session_moderator)
+          }
+          currSession.session_moderator = currSession.session_moderator.filter( d => d !== null);
+
           currSession.presenters = ( session[0].presentation_type == 'workshop' )
           ? session[0].presenters.map( d => d.name ).join(', ')
           : session.map( d => d.presenters.map( 
@@ -196,12 +196,11 @@ $(function(){
           currSession.colClasses = 
             ( session[0].presentation_type == 'workshop' ) 
             ? "sm-col-3" : "sm-col-9";
-
           // current session template
           $currSession = $(`
           <a class="session col sm-col ${currSession.colClasses} open-modal" href="#session${currSession.id}" rel="modal:open">
           <h3>${currSession.title}</h3>
-          ${(currSession.session_moderator) ? '<p>Moderator: ' + currSession.session_moderator.split(',')[0] + '</p>': ''}
+          ${(currSession.session_moderator.length) ? '<p>Moderator: ' + currSession.session_moderator[0].split(",")[0] + '</p>': ''}
           <p>${currSession.presenters}</p>
           </a>`);
 
@@ -235,8 +234,8 @@ $(function(){
       // return formatted presenter display string
       // including anchor element if url
       function getPresentersTemplate(presenters) {
-        
-        let presentersTemplate = presenters.map(d =>
+        console.log(presenters)
+        let presentersTemplate = presenters.map(d => 
           `
             ${(d.url) ? '<a href="' + d.url + '">' : ''}
             ${d.name}, ${d.affiliation} 
@@ -250,13 +249,15 @@ $(function(){
       // including anchor element if url
       function getPresentationLinksTemplate(links) {
         let presentationLinksTemplate = [];
-        presentationLinksTemplate.push('<h6>Supplemental Links</h6`>')
-        presentationLinksTemplate.push('<ul>')
-        links.map(d => {
-          presentationLinksTemplate.push(marked(`- ${d}`))
-          }
-        )
-        presentationLinksTemplate.push('</ul>')
+        if (links.length) {
+          links.map(d => {
+            presentationLinksTemplate.push(marked(`- ${d}`))
+            }
+          )
+          presentationLinksTemplate.unshift('<ul>')
+          presentationLinksTemplate.unshift('<h6>Supplemental Links</h6`>')
+          presentationLinksTemplate.push('</ul>')
+        }
         return presentationLinksTemplate.join('\n') || '';
       }
 
