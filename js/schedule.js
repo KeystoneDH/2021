@@ -185,7 +185,7 @@ $(function(){
           for ( presentation of session ) {
             currSession.session_moderator.push(...presentation.session_moderator)
           }
-          currSession.session_moderator = currSession.session_moderator.filter( d => d !== null);
+          currSession.session_moderator = currSession.session_moderator.filter( d => d);
 
           currSession.presenters = ( session[0].presentation_type == 'workshop' )
           ? session[0].presenters.map( d => d.name ).join(', ')
@@ -248,17 +248,20 @@ $(function(){
       // return formatted presentation links
       // including anchor element if url
       function getPresentationLinksTemplate(links) {
-        let presentationLinksTemplate = [];
+        let presentationLinksTemplate = '';
+        links = links.filter( d => d);
         if (links.length) {
+          presentationLinksTemplate = [];
           links.map(d => {
             presentationLinksTemplate.push(marked(`- ${d}`))
             }
           )
-          presentationLinksTemplate.unshift('<ul>')
-          presentationLinksTemplate.unshift('<h6>Supplemental Links</h6`>')
-          presentationLinksTemplate.push('</ul>')
+          presentationLinksTemplate.unshift('<ul>');
+          presentationLinksTemplate.unshift('<h6>Supplemental Links</h6`>');
+          presentationLinksTemplate.push('</ul>');
+          presentationLinksTemplate = presentationLinksTemplate.join('\n');
         }
-        return presentationLinksTemplate.join('\n') || '';
+        return presentationLinksTemplate;
       }
 
       $(e).append($timeslot).each((i,el)=>{ $(el).removeClass('hide') })
