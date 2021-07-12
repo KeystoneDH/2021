@@ -210,7 +210,7 @@ $(function(){
               <h4>${currSession.title}</h4>
               <h4>${displayTime}</h4>
               ${(currSession.session_moderator.length) ? '<h4>Moderator:<br/>' + currSession.session_moderator + '</h4>': ''}
-              <h4><a href="https://2021-sessions.keystonedh.network#${currSession.id}">Zoom link</a><h4>
+              <h4><a href="https://2021-sessions.keystonedh.network#session${currSession.id}">Zoom link</a><h4>
             </span></div>
           `)
 
