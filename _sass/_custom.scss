@@ -341,3 +341,10 @@ li:before {
   }
 
 }
+
+.links {
+  a {
+    text-shadow: unset;
+    color: lighten($link-color, 25%)
+  }
+}

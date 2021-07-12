@@ -104,6 +104,6 @@ gems:
   - jekyll-sitemap
   - gemoji
 # https://github.com/jekyll/jekyll/issues/2938
-exclude: [vendor, html-example]
+exclude: [vendor, html-example,_pages/links.md]
 include:
   - _pages

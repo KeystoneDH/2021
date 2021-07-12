@@ -1,12 +1,12 @@
 // parse json from google sheet and render schedule html
 
-const gsheetID = '1AiBjC9YapNJEHgHpqXvNOOVOZO_5h-KDaJQEmtz3jzI';
-const gsheetSheetNum = '1';
+const gsheetID = '1AiBjC9YapNJEHgHpqXvNOOVOZO_5h-KDaJQEmtz3jzI'
+const gsheetSheetNum = '1'
 const gSheetURL = `https://spreadsheets.google.com/feeds/cells/${gsheetID}/${gsheetSheetNum}/public/full?alt=json`
-const confDayStart = 14;
-const confLength = 3;
-let columns = [];
-let data = [];
+const confDayStart = 14
+const confLength = 3
+let columns = []
+let data = []
 const timeslot = [
   "9:30&ndash;10:45am<br/>(EDT)",
   "10:45&ndash;12:00pm<br/>(EDT)",
@@ -16,27 +16,27 @@ const timeslot = [
   "4:15&ndash;5:30pm<br/>(EDT)"
 ]
 
-let $schedule = $('#schedule-view div');
+let $schedule = $('#schedule-view div')
 
 // take google sheet json feed and return row objects
 // with column header keys
 function parseGoogleSheetsJSONFeed(data) {
-  const sheet = {};
-  let rows = [];
+  const sheet = {}
+  let rows = []
 
-  sheet.rows = data.feed.entry;
+  sheet.rows = data.feed.entry
   sheet.cols = sheet.rows
       .filter( d => d.gs$cell.row == 1)
-      .map( d => d.gs$cell.$t );
-  sheet.numRows = Number(sheet.rows[sheet.rows.length - 1].gs$cell.row);
+      .map( d => d.gs$cell.$t )
+  sheet.numRows = Number(sheet.rows[sheet.rows.length - 1].gs$cell.row)
 
-  columns = sheet.cols;
+  columns = sheet.cols
 
   for (let i = 2; i <= sheet.numRows; i++) {
-    let row = {};
+    let row = {}
     let cells = sheet.rows
         .filter(d => d.gs$cell.row == i)
-        .map(d => d.gs$cell);
+        .map(d => d.gs$cell)
     
     sheet.cols.forEach( (d,i) => {
       row[d] = cells
@@ -44,37 +44,37 @@ function parseGoogleSheetsJSONFeed(data) {
           .map(d => d.$t)[0]
     })
 
-    rows.push(row);
+    rows.push(row)
   }
-  return rows;
+  return rows
 }
 
 // returns transformed row objects to schedule data organized
 // by day, session, and presentation
 function transformToSchedule(data){
-  let daySessions = [];
-  let presentations = getPresentations(data);
-  let sessions = getSessions(presentations);
+  let daySessions = []
+  let presentations = getPresentations(data)
+  let sessions = getSessions(presentations)
 
   for (let i = 0; i < confLength; i++ ){
     daySessions.push(
       sessions.filter( 
         d => d[0].session_id.substring(0,2) == confDayStart + i
-    ));
+    ))
   }
-  return daySessions;
+  return daySessions
 }
 
 // return array of transformed unique presentations
 function getPresentations(data) {
-  let presentations = [];
-  let presentationIDs = getUniqueKeys(data, 'id');
+  let presentations = []
+  let presentationIDs = getUniqueKeys(data, 'id')
 
   function transformPresentation(presentation){
-    let currPresentation = {};
+    let currPresentation = {}
 
     for (let column of columns){
-      currPresentation[column] = [];
+      currPresentation[column] = []
       for(row of presentation) { 
         currPresentation[column].push(row[column] || null)
       }
@@ -83,64 +83,64 @@ function getPresentations(data) {
       }
     }
 
-    currPresentation.presenters = getPresenters(currPresentation);
-    currPresentation.links = getLinks(currPresentation);
-    return currPresentation;
+    currPresentation.presenters = getPresenters(currPresentation)
+    currPresentation.links = getLinks(currPresentation)
+    return currPresentation
   }
 
   for (let i of presentationIDs) {
-    presentations.push( data.filter( (d) => d.id == i ) );
+    presentations.push( data.filter( (d) => d.id == i ) )
   }
 
-  presentations = presentations.map( (d) => transformPresentation(d) );
-  return presentations;
+  presentations = presentations.map( (d) => transformPresentation(d) )
+  return presentations
 }
 
 // return session array of presentation arrays
 function getSessions(presentations) {
-  let sessions = [];
-  let sessionIDs = getUniqueKeys(presentations, 'session_id');
+  let sessions = []
+  let sessionIDs = getUniqueKeys(presentations, 'session_id')
 
   for( id of sessionIDs) {
-    sessions.push(presentations.filter( e => e.session_id == id));
+    sessions.push(presentations.filter( e => e.session_id == id))
   }
-  return sessions;
+  return sessions
 }
 
 // return array of presenters objects
 function getPresenters(currSession) {
-  let currPresenters = [];
+  let currPresenters = []
   currSession.presenter_name.forEach( (v,i) => {
-    let currPresenter  = {};
-    currPresenter.name = v;
+    let currPresenter  = {}
+    currPresenter.name = v
     currPresenter.affiliation = (currSession.presenter_affiliation[i]) ?
-      currSession.presenter_affiliation[i] : null;
+      currSession.presenter_affiliation[i] : null
     currPresenter.url = (currSession.presenter_url[i]) ?
-      currSession.presenter_url[i] : null;
-    currPresenters.push(currPresenter);
-  });
+      currSession.presenter_url[i] : null
+    currPresenters.push(currPresenter)
+  })
 
-  return currPresenters;
+  return currPresenters
 }
 
 // return array of transformed supplemental presentation links
 function getLinks(currSession) {
-  let currLinks = [];
+  let currLinks = []
   for (link of currSession.presentation_supplemental_link) { 
     currLinks.push(link)
   } 
 
-  return currLinks;
+  return currLinks
 }
 
 // return array of uniqe keys
 function getUniqueKeys(object, targetKey) {
-  let uniqueKeys = [];
+  let uniqueKeys = []
   for ( elem of object ) { 
-    uniqueKeys.push(elem[targetKey]); 
+    uniqueKeys.push(elem[targetKey]) 
   }
 
-  return [...new Set(uniqueKeys)];
+  return [...new Set(uniqueKeys)]
 
 }
 
@@ -149,7 +149,7 @@ $(function(){
   $.getJSON( gSheetURL, (d) => { data = parseGoogleSheetsJSONFeed(d) })
     .then( () => {
 
-      let scheduleData = transformToSchedule(data);
+      let scheduleData = transformToSchedule(data)
 
       // for each schedule day, append day, session, 
       // presentation information card and modal
@@ -166,60 +166,61 @@ $(function(){
           <div class="clearfix">
             <div class="col sm-col sm-col-2">${displayTime}</div>
           <div>
-          `);
+          `)
         if (session[0].presentation_type === 'workshop') {
             // for workshops, add a session block for each concurrent workshop
             for( workshop of session ) {
-              $timeslot.append( getSessionBlock([workshop]) );
+              $timeslot.append( getSessionBlock([workshop]) )
             }
         } else {
               // for sessions, add one session block
-              $timeslot.append( getSessionBlock(session) );  
+              $timeslot.append( getSessionBlock(session) )  
         }
 
         function getSessionBlock( session ) {
-          let currSession = {};
-          currSession.id = session[0].session_id;
-          currSession.title = session[0].session_title;
+          let currSession = {}
+          currSession.id = session[0].session_id
+          currSession.title = session[0].session_title
           currSession.session_moderator = []
           for ( presentation of session ) {
             currSession.session_moderator.push(...presentation.session_moderator)
           }
-          currSession.session_moderator = currSession.session_moderator.filter( d => d);
+          currSession.session_moderator = currSession.session_moderator.filter( d => d)
 
           currSession.presenters = ( session[0].presentation_type == 'workshop' )
           ? session[0].presenters.map( d => d.name ).join(', ')
           : session.map( d => d.presenters.map( 
             d => d.name ).join(', ')
-          ).join(', ');
+          ).join(', ')
 
           currSession.colClasses = 
             ( session[0].presentation_type == 'workshop' ) 
-            ? "sm-col-3" : "sm-col-9";
+            ? "sm-col-3" : "sm-col-9"
           // current session template
           $currSession = $(`
           <a class="session col sm-col ${currSession.colClasses} open-modal" href="#session${currSession.id}" rel="modal:open">
           <h3>${currSession.title}</h3>
           ${(currSession.session_moderator.length) ? '<p>Moderator: ' + currSession.session_moderator[0].split(",")[0] + '</p>': ''}
           <p>${currSession.presenters}</p>
-          </a>`);
+          </a>`)
 
           $currSessionDetails = $(`
             <div id="session${currSession.id}" class="modal"><span>
               <a href="#" rel="modal:close">Close</a>
               <h4>${currSession.title}</h4>
               <h4>${displayTime}</h4>
-              ${(currSession.session_moderator) ? '<h4>Moderator:<br/>' + currSession.session_moderator + '</h4>': ''}</h4>
+              ${(currSession.session_moderator.length) ? '<h4>Moderator:<br/>' + currSession.session_moderator + '</h4>': ''}
+              <h4><a href="https://2021-sessions.keystonedh.network#${currSession.id}">Zoom link</a><h4>
             </span></div>
-          `);
+          `)
 
-          $currSessionDetails.append(getDetailsTemplate(session));
-          $currSession.append($currSessionDetails);
-          return $currSession;
+          $currSessionDetails.append(getDetailsTemplate(session))
+          $currSession.append($currSessionDetails)
+          return $currSession
         }
 
       function getDetailsTemplate(session){
-        let detailsTemplate = [];
+        let detailsTemplate = []
         for ( presentation of session ) {
           detailsTemplate.push(`<h5>
           ${presentation.presentation_title || presentation.session_title || ''}
@@ -228,13 +229,12 @@ $(function(){
           detailsTemplate.push(`<p>${marked(presentation.presenter_abstract[0])}</p>`)
           detailsTemplate.push(getPresentationLinksTemplate(presentation.links))
         }
-        return detailsTemplate;
+        return detailsTemplate
       }
 
       // return formatted presenter display string
       // including anchor element if url
       function getPresentersTemplate(presenters) {
-        console.log(presenters)
         let presentersTemplate = presenters.map(d => 
           `
             ${(d.url) ? '<a href="' + d.url + '">' : ''}
@@ -248,30 +248,29 @@ $(function(){
       // return formatted presentation links
       // including anchor element if url
       function getPresentationLinksTemplate(links) {
-        let presentationLinksTemplate = '';
-        links = links.filter( d => d);
+        let presentationLinksTemplate = ''
+        links = links.filter( d => d)
         if (links.length) {
-          presentationLinksTemplate = [];
+          presentationLinksTemplate = []
           links.map(d => {
             presentationLinksTemplate.push(marked(`- ${d}`))
             }
           )
-          presentationLinksTemplate.unshift('<ul>');
-          presentationLinksTemplate.unshift('<h6>Supplemental Links</h6`>');
-          presentationLinksTemplate.push('</ul>');
-          presentationLinksTemplate = presentationLinksTemplate.join('\n');
+          presentationLinksTemplate.unshift('<ul>')
+          presentationLinksTemplate.unshift('<h6>Supplemental Links</h6`>')
+          presentationLinksTemplate.push('</ul>')
+          presentationLinksTemplate = presentationLinksTemplate.join('\n')
         }
-        return presentationLinksTemplate;
+        return presentationLinksTemplate
       }
 
       $(e).append($timeslot).each((i,el)=>{ $(el).removeClass('hide') })
     })
-  });
+  })
 
       $('a.open-modal').click(function(event) {
-        $(this).modal({ fadeDuration: 250 });
-        return false;
-      });
-
+        $(this).modal({ fadeDuration: 250 })
+        return false
+      })
     })
-});
+})

@@ -9,3 +9,4 @@ vendor
 _config.gh-pages.yml
 
 Gemfile.lock
+_pages/links.md
