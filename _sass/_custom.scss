@@ -349,8 +349,8 @@ li:before {
   }
   span.anchor {
     visibility: hidden;
-    height: 1.5 * $h2;
-    margin-top: -1.5 * $h2;
+    height: 4 * $h1;
+    margin-top: -4 * $h1;
     display: block;
   }
 }
