@@ -6,7 +6,16 @@ tags: page
 ---
 
 # July 14-16, 2021<br/>@ Temple University
-  
+ 
+All attendees should have received an email containing a code to access the Zoom links for the scheduled events.
+
+To access the Zoom links:
+
+    Click on an individual session to see it's Zoom link listed on the left of the pop-up screen.
+    When the prompt asks you for username and password, enter the code you received in your registration confirmation email.
+
+Questions? contactkeystonedh@gmail.com
+
 <br/>
 
 <a class="button button-dark-blue" href="https://charlesstudy.temple.edu/calendar/events/keystone_dh">Register for Keystone DH 2021</a>
