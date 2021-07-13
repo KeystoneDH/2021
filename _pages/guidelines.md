@@ -17,7 +17,7 @@ To access the Zoom links:
 
 Questions? contactkeystonedh@gmail.com
 
-##Presenter Guidelines
+## Presenter Guidelines
 
 For Keystone DH 2021, events will take place in a series of virtual formats.
 
