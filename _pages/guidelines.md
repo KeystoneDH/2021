@@ -8,11 +8,9 @@ permalink: /guidelines
 
 ## Attendee Guidelines
 
-All attendees should have received an email containing a code to access the Zoom links for the scheduled events.
+To access the Zoom links for each event:
 
-To access the Zoom links:
-
-    Click on an individual session to see it's Zoom link listed on the left of the pop-up screen.
+    Click on an individual session and click on the Zoom link beside the presentation information.
     When the prompt asks you for username and password, enter the code you received in your registration confirmation email.
 
 Questions? contactkeystonedh@gmail.com
