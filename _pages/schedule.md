@@ -13,7 +13,7 @@ At the prompt, enter the code you received in your registration confirmation ema
 
 Use the same code for both Username and Password
 
-Questions? contactkeystonedh@gmail.com
+Questions? Email contactkeystonedh@gmail.com
 
 <div id="schedule-view">
   <h2>July 14</h2>
