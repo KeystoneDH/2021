@@ -8,14 +8,15 @@ permalink: /guidelines
 
 ## Attendee Guidelines
 
-To access the Zoom links for each event:
+To access the Zoom links for each scheduled event:
 
 Click on an individual session and follow the "Zoom link" beside the presentation information.
-When the prompt asks for username and password, enter the code you received in your registration confirmation email.
 
-Please note: All Zoom sessions will have live caption enabled. Recordings of all webinars with transcriptions will be made available after the conference.
+At the prompt, enter the code you received in your registration confirmation email. 
 
-Questions? contactkeystonedh@gmail.com
+Use the same code for both Username and Password
+
+Questions? Email contactkeystonedh@gmail.com
 
 ## Presenter Guidelines
 
