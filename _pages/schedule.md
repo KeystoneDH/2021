@@ -7,8 +7,11 @@ permalink: /schedule
 ---
 To access the Zoom links for each scheduled event:
 
-    Click on an individual session and follow the "Zoom link" beside the presentation information.
-    When the prompt asks you for username and password, enter the code you received in your registration confirmation email.
+Click on an individual session and follow the "Zoom link" beside the presentation information.
+
+At the prompt, enter the code you received in your registration confirmation email. 
+
+Use the same code for both Username and Password
 
 Questions? contactkeystonedh@gmail.com
 
