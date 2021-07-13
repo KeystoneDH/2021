@@ -10,8 +10,8 @@ permalink: /guidelines
 
 To access the Zoom links for each event:
 
-    Click on an individual session and click on the Zoom link beside the presentation information.
-    When the prompt asks you for username and password, enter the code you received in your registration confirmation email.
+    Click on an individual session and follow the "Zoom link" beside the presentation information.
+    When the prompt asks for username and password, enter the code you received in your registration confirmation email.
 
 Questions? contactkeystonedh@gmail.com
 
