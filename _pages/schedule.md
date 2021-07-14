@@ -11,7 +11,7 @@ Click on an individual session and follow the "Zoom link" beside the presentatio
 
 At the prompt, enter the code you received in your registration confirmation email. 
 
-Use the same code for both Username and Password
+**Use the same code for both Username and Password**
 
 Questions? Email contactkeystonedh@gmail.com
 
