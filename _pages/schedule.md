@@ -5,6 +5,17 @@ id: schedule
 tags: page
 permalink: /schedule
 ---
+To access the Zoom links for each scheduled event:
+
+Click on an individual session and follow the "Zoom link" beside the presentation information.
+
+At the prompt, enter the code you received in your registration confirmation email. 
+
+**Use the same code for both Username and Password**
+
+Due to some changes to the schedule, if a link doesn't work, refresh your browser's cache or try using another browser. 
+
+Questions? Email contactkeystonedh@gmail.com.
 
 <div id="schedule-view">
   <h2>July 14</h2>

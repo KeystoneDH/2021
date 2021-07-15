@@ -6,7 +6,9 @@ tags: page
 ---
 
 # July 14-16, 2021<br/>@ Temple University
-  
+ 
+To attend the virtual event, after registering, visit the [Schedule page](https://keystonedh.network/2021/schedule).
+
 <br/>
 
 <a class="button button-dark-blue" href="https://charlesstudy.temple.edu/calendar/events/keystone_dh">Register for Keystone DH 2021</a>
