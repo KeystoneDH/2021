@@ -111,13 +111,15 @@ function getSessions(presentations) {
 function getPresenters(currSession) {
   let currPresenters = []
   currSession.presenter_name.forEach( (v,i) => {
-    let currPresenter  = {}
-    currPresenter.name = v
-    currPresenter.affiliation = (currSession.presenter_affiliation[i]) ?
-      currSession.presenter_affiliation[i] : null
-    currPresenter.url = (currSession.presenter_url[i]) ?
-      currSession.presenter_url[i] : null
-    currPresenters.push(currPresenter)
+    if (v !== null ) {
+      let currPresenter  = {}
+      currPresenter.name = v
+      currPresenter.affiliation = (currSession.presenter_affiliation[i]) ?
+        currSession.presenter_affiliation[i] : null
+      currPresenter.url = (currSession.presenter_url[i]) ?
+        currSession.presenter_url[i] : null
+      currPresenters.push(currPresenter)
+    }
   })
 
   return currPresenters
