@@ -13,7 +13,9 @@ At the prompt, enter the code you received in your registration confirmation ema
 
 **Use the same code for both Username and Password**
 
-Questions? Email contactkeystonedh@gmail.com
+Due to some changes to the schedule, if a link doesn't work, refresh your browser's cache or try using another browser. 
+
+Questions? Email contactkeystonedh@gmail.com.
 
 <div id="schedule-view">
   <h2>July 14</h2>
