@@ -1,8 +1,9 @@
 // parse json from google sheet and render schedule html
 
-const gsheetID = '1AiBjC9YapNJEHgHpqXvNOOVOZO_5h-KDaJQEmtz3jzI'
-const gsheetSheetNum = '1'
-const gSheetURL = `https://spreadsheets.google.com/feeds/cells/${gsheetID}/${gsheetSheetNum}/public/full?alt=json`
+// const gsheetID = '1AiBjC9YapNJEHgHpqXvNOOVOZO_5h-KDaJQEmtz3jzI'
+// const gsheetSheetNum = '1'
+// const gSheetURL = `https://spreadsheets.google.com/feeds/cells/${gsheetID}/${gsheetSheetNum}/public/full?alt=json`
+const gSheetURL = '/js/schedule.json'
 const confDayStart = 14
 const confLength = 3
 let columns = []
@@ -212,7 +213,6 @@ $(function(){
               <h4>${currSession.title}</h4>
               <h4>${displayTime}</h4>
               ${(currSession.session_moderator.length) ? '<h4>Moderator:<br/>' + currSession.session_moderator + '</h4>': ''}
-              <h4><a href="https://2021-sessions.keystonedh.network#session${currSession.id}">Zoom link</a><h4>
             </span></div>
           `)
 
