@@ -13,6 +13,8 @@ Thank you to all attendees, presenters, and organizers!
 
 Keystone DH and [Temple University Libraries’ Loretta C. Duckworth Scholars Studio](https://library.temple.edu/lcdss) hosted this year’s virtual conference July 14-16th, 2021.
 
+Recordings will be made available at https://library.temple.edu/watchpastprograms
+
 [Explore the full schedule here.](https://keystonedh.network/2021/schedule)
 
 ---
