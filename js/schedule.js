@@ -3,7 +3,7 @@
 // const gsheetID = '1AiBjC9YapNJEHgHpqXvNOOVOZO_5h-KDaJQEmtz3jzI'
 // const gsheetSheetNum = '1'
 // const gSheetURL = `https://spreadsheets.google.com/feeds/cells/${gsheetID}/${gsheetSheetNum}/public/full?alt=json`
-const gSheetURL = '/js/schedule.json'
+const gSheetURL = '/2021/js/schedule.json'
 const confDayStart = 14
 const confLength = 3
 let columns = []
